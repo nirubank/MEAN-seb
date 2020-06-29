@@ -14,7 +14,7 @@ var connection_string = '127.0.0.1:27017/YOUR_APP_NAME';
   };
   //Connect to mongodb using mongoose library
 
-mongoose.connect(connection_string, (err) => {
+mongoose.connect('mongodb://'+connection_string, (err) => {
     if (!err)
         console.log('MongoDB connection succeeded.');
     else
