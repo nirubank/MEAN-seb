@@ -10,7 +10,7 @@ import { Employee } from './employee.model';
 export class EmployeeService {
   selectedEmployee: Employee;
   employees: Employee[];
-  readonly baseURL = 'http://nodejs-mongo-persistent-nirubanmeanstacktest3.apps.cluster3.openshift3.iets.com:3000/employees';
+  readonly baseURL = 'http://nodejs-mongo-persistent-nirubanmeanstacktest3.apps.cluster3.openshift3.iets.com/employees';
 
   constructor(private http: HttpClient) { }
 
