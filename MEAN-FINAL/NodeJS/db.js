@@ -1,20 +1,20 @@
 const mongoose = require('mongoose');
 
-//const dbHost = 'mongodb://database/CrudDB';
-//'mongodb://localhost:27017/CrudDB'
+var mongoServiceName = process.env.DATABASE_SERVICE_NAME,
+    mongoDatabase = process.env.MONGODB_DATABASE,
+    mongoPassword = process.env.MONGODB_PASSWORD,
+    mongoUser = process.env.MONGODB_USER;
 
-var connection_string = '127.0.0.1:27017/YOUR_APP_NAME';
-  // if OPENSHIFT env variables are present, use the available connection info:
-  if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
-    connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-    process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-    process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-    process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-    process.env.OPENSHIFT_APP_NAME;
-  };
-  //Connect to mongodb using mongoose library
+if (process.env.DATABASE_SERVICE_NAME) {
+  var mongodburl = 'mongodb://' + mongoUser + ':' + mongoPassword + '@' + mongoServiceName +':27017/' + mongoDatabase;
+} else {
+  var mongodburl = 'mongodb://' + mongoUser + ':' + mongoPassword + '@127.0.0.1:27017/' + mongoDatabase;
+}
 
-mongoose.connect('mongodb://'+connection_string, (err) => {
+console.log(mongodburl)
+
+
+mongoose.connect(mongodburl, (err) => {
     if (!err)
         console.log('MongoDB connection succeeded.');
     else
