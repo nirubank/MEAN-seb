@@ -12,6 +12,8 @@ app.use(bodyParser.json());
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
+app.get('/', (req, res) => res.send('Hello World!'))
+
 app.listen(port, ip, () => console.log('Server started at port : '+port+" IP"+ ip));
 
 app.use('/employees', employeeController);
