@@ -7,7 +7,7 @@ var employeeController = require('./controllers/employeeController.js');
 
 var app = express();
 app.use(bodyParser.json());
-app.use(cors({ origin: 'http://mean-seb-git-nirubanmeanstacktest3.apps.cluster3.openshift3.iets.com:4200' }));
+app.use(cors({ origin: 'http://mean-seb-git-nirubanmeanstacktest3.apps.cluster3.openshift3.iets.com' }));
 
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
